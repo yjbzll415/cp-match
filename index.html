@@ -40,8 +40,6 @@
   .cp-banner { width:100%; height:200px; background:linear-gradient(135deg,#1a0a2e 0%,#2d1b4e 50%,#1a0a2e 100%); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
   .cp-banner::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 50% 60%,rgba(192,132,252,0.2) 0%,transparent 60%); }
   .cp-badge { position:absolute; top:14px; left:14px; background:white; color:#111; font-size:10px; font-weight:800; letter-spacing:2px; padding:5px 12px; border-radius:20px; z-index:3; }
-  .cp-heart { font-size:18px; display:block; color:var(--accent2); animation:pulse 1.5s ease-in-out infinite; }
-  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.25)} }
 
   .cp-info { padding:20px 22px 22px; }
   .cp-name-main { font-family:'Noto Serif SC',serif; font-size:24px; font-weight:700; color:#111; letter-spacing:3px; margin-bottom:14px; }
@@ -111,41 +109,15 @@ const cpDatabase = [
   { name:"黑喵",     quote:"1500是800的两倍",                     img:"./cp_photos/黑喵.jpg",     weight:3 },
   { name:"艾朱",     quote:"生日快乐，我对自己说",                 img:"./cp_photos/艾朱.jpg",     weight:3.5 },
   { name:"左佳",     quote:"i want i want，爱情在这一刻绽放",      img:"./cp_photos/左佳.jpg",     weight:3 },
-  { name:"七五折",   quote:"商场打折了，打赵一jie  <div class="top-cp-card">
-    <div class="cp-banner" id="topPhotoBanner">
-      <div class="cp-badge">💫 命定第一</div>
-      <img id="topPhoto" src="" alt="" style="display:none;width:100%;height:100%;object-fit:cover;object-position:top center;filter:grayscale(15%);transition:filter 0.5s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(15%)'" onerror="this.style.display='none';">
-    </div>
-    <div class="cp-info">
-      <div class="cp-name-main" id="topCPName"></div>
-      <div class="cp-quote">
-        <div class="cp-quote-text" id="topQuote"></div>
-      </div>
-      <div class="match-score-row">
-        <span class="match-pill">命中注定 · 灵魂共鸣</span>
-        <span class="match-pct" id="topScore"></span>
-      </div>
-    </div>
-  </div>
-
-  <button class="retry-btn" onclick="resetAll()">↺ 重新推算</button>
-</div>
-
-<script>
-const cpDatabase = [
-  { name:"卡黄",     quote:"婷婷桑の笑顔は私の心の中で一番です", img:"./cp_photos/卡黄.jpg",     weight:4 },
-  { name:"黑喵",     quote:"1500是800的两倍",                     img:"./cp_photos/黑喵.jpg",     weight:3 },
-  { name:"艾朱",     quote:"生日快乐，我对自己说",                 img:"./cp_photos/艾朱.jpg",     weight:3.5 },
-  { name:"左佳",     quote:"i want i want，爱情在这一刻绽放",      img:"./cp_photos/左佳.jpg",     weight:3 },
-  { name:"七五折",   quote:"商场打折了，赵一劼，赵一劼，赵一劼",             img:"./cp_photos/七五折.jpg",   weight:4 },
+  { name:"七五折",   quote:"商场打折了，赵一劼，赵一劼，赵一劼",   img:"./cp_photos/七五折.jpg",   weight:4 },
   { name:"戴莫",     quote:"多想被你牵起手，却总是差一点点",       img:"./cp_photos/戴莫.jpg",     weight:3 },
   { name:"奶包",     quote:"一年有365个日出，我送你999个玫瑰骨朵", img:"./cp_photos/奶包.jpg",     weight:3 },
   { name:"马鹿",     quote:"新粉，请问马鹿的鹿是谁的陆啊",         img:"./cp_photos/马鹿.jpg",     weight:3 },
   { name:"竹芝",     quote:"麻烦给我的爱人来一盒达美乐",           img:"./cp_photos/竹芝.jpg",     weight:3 },
-  { name:"杉源",     quote:"你闲鱼有她的香水喂",                   img:"./cp_photos/杉源.jpg",     weight:4},
+  { name:"杉源",     quote:"你闲鱼有她的香水喂",                   img:"./cp_photos/杉源.jpg",     weight:4 },
   { name:"W门",      quote:"爱妹让人受尽委屈，找不到相爱的证据",   img:"./cp_photos/W门.jpg",      weight:4 },
   { name:"花倩月下", quote:"一瞬间紧紧拥抱无处可逃一吻天荒",       img:"./cp_photos/花倩月下.jpg", weight:3 },
-  { name:"so蕾",     quote:"你照片有一道墙，但我发现一扇窗",       img:"./cp_photos/so蕾.jpg",     weight:4},
+  { name:"so蕾",     quote:"你照片有一道墙，但我发现一扇窗",       img:"./cp_photos/so蕾.jpg",     weight:4 },
   { name:"你和nene🤓",quote:"想被你私有，我的心，毫无保留",        img:"./cp_photos/你和nene.jpg", weight:4 },
   { name:"艺些",     quote:"感谢你特别邀请~",                       img:"./cp_photos/艺些.jpg",     weight:3 },
   { name:"恩瑾",     quote:"幸福好不容易怎么你却不敢了呢",         img:"./cp_photos/恩瑾.jpg",     weight:1 },
@@ -181,7 +153,7 @@ function showResult() {
 
   document.getElementById('topCPName').textContent = top.name;
   document.getElementById('topQuote').textContent  = top.quote;
-  document.getElementById('topScore').textContent  = `匹配度 ${pct}%`;
+  document.getElementById('topScore').textContent  = '匹配度 ' + pct + '%';
 
   const photoEl = document.getElementById('topPhoto');
   if (top.img) {
